@@ -1,0 +1,13 @@
+import com.sap.gateway.ip.core.customdev.util.Message;
+import java.util.HashMap;
+    
+def Message processData(Message message) {    
+ //Headers
+ def headers = message.getHeaders();
+ def isEmptyHeader = headers.get("CamelHttpQuery") == null || 
+ headers.get("CamelHttpQuery").toString().isEmpty()
+
+ message.setProperty("isHeaderEmpty", isEmptyHeader)
+
+return message;
+}
